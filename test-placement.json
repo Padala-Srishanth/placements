@@ -1,0 +1,18 @@
+{
+  "companyName": "Test Company",
+  "companyLogo": "",
+  "role": "Software Engineer",
+  "location": "Bangalore",
+  "batchYear": 2024,
+  "difficulty": "Medium",
+  "interviewRounds": [
+    {
+      "name": "Technical Round",
+      "details": "Data structures and algorithms"
+    }
+  ],
+  "commonlyAskedQuestions": [
+    "What is your experience with React?"
+  ],
+  "tips": "Practice coding problems"
+}

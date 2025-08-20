@@ -1,0 +1,192 @@
+.admin-form-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  min-height: calc(100vh - 80px);
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.form-header h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin-bottom: 0.5rem;
+}
+
+.form-header p {
+  color: #4a5568;
+  font-size: 1.1rem;
+}
+
+.error-message {
+  background-color: #fed7d7;
+  color: #c53030;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid #feb2b2;
+  font-weight: 500;
+}
+
+.success-message {
+  background-color: #c6f6d5;
+  color: #2f855a;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid #9ae6b4;
+  font-weight: 500;
+}
+
+/* Form Container Styling */
+.admin-form-page .placement-form,
+.admin-form-page .higher-education-form {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+}
+
+/* Enhanced Form Section Headers */
+.admin-form-page .form-section h3 {
+  color: #2d3748;
+  border-bottom: 2px solid #3182ce;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Enhanced Input Styling */
+.admin-form-page .form-group input,
+.admin-form-page .form-group select,
+.admin-form-page .form-group textarea {
+  border: 2px solid #e2e8f0;
+  transition: all 0.2s;
+}
+
+.admin-form-page .form-group input:focus,
+.admin-form-page .form-group select:focus,
+.admin-form-page .form-group textarea:focus {
+  border-color: #3182ce;
+  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+}
+
+/* Enhanced Button Styling */
+.admin-form-page .submit-btn {
+  background: linear-gradient(135deg, #3182ce 0%, #2c5aa0 100%);
+  padding: 1rem 2.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 0 2px 4px rgba(49, 130, 206, 0.2);
+}
+
+.admin-form-page .submit-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #2c5aa0 0%, #2a4a8a 100%);
+  box-shadow: 0 4px 8px rgba(49, 130, 206, 0.3);
+  transform: translateY(-1px);
+}
+
+.admin-form-page .cancel-btn {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border: 2px solid #e2e8f0;
+  background-color: white;
+  color: #4a5568;
+}
+
+.admin-form-page .cancel-btn:hover {
+  border-color: #cbd5e0;
+  background-color: #f7fafc;
+  color: #2d3748;
+}
+
+/* Enhanced Interview Rounds */
+.admin-form-page .interview-round {
+  background: linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%);
+  border: 2px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.admin-form-page .round-header h4 {
+  color: #3182ce;
+  font-weight: 600;
+}
+
+/* Enhanced Add/Remove Buttons */
+.admin-form-page .add-btn {
+  background: linear-gradient(135deg, #38a169 0%, #2f855a 100%);
+  box-shadow: 0 2px 4px rgba(56, 161, 105, 0.2);
+  font-weight: 600;
+}
+
+.admin-form-page .add-btn:hover {
+  background: linear-gradient(135deg, #2f855a 0%, #276749 100%);
+  box-shadow: 0 4px 8px rgba(56, 161, 105, 0.3);
+  transform: translateY(-1px);
+}
+
+.admin-form-page .remove-btn {
+  background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
+  box-shadow: 0 2px 4px rgba(229, 62, 62, 0.2);
+  font-weight: 600;
+}
+
+.admin-form-page .remove-btn:hover {
+  background: linear-gradient(135deg, #c53030 0%, #9c2626 100%);
+  box-shadow: 0 4px 8px rgba(229, 62, 62, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Loading State */
+.admin-form-page .submit-btn:disabled {
+  background: #a0aec0;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .admin-form-page {
+    padding: 1rem 0.5rem;
+  }
+  
+  .form-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+  }
+  
+  .form-header h1 {
+    font-size: 1.875rem;
+  }
+  
+  .form-header p {
+    font-size: 1rem;
+  }
+  
+  .admin-form-page .submit-btn,
+  .admin-form-page .cancel-btn {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .admin-form-page .submit-btn,
+  .admin-form-page .cancel-btn {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.85rem;
+  }
+}

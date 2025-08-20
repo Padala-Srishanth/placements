@@ -1,0 +1,184 @@
+.higher-education-card {
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.higher-education-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-color: #38a169;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 1.5rem 1rem;
+}
+
+.university-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  background-color: #f7fafc;
+  padding: 0.25rem;
+}
+
+.university-info h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1a202c;
+  margin-bottom: 0.25rem;
+}
+
+.university-info .course {
+  color: #4a5568;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.country-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.country-flag {
+  font-size: 1.2rem;
+}
+
+.country-name {
+  color: #718096;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.card-body {
+  padding: 0 1.5rem 1rem;
+}
+
+.experience-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+}
+
+.detail-item .label {
+  color: #718096;
+  font-weight: 500;
+}
+
+.detail-item .value {
+  color: #2d3748;
+  font-weight: 600;
+}
+
+.exam-scores {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.exam-scores .label {
+  color: #718096;
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.exam-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.exam-badge {
+  background-color: #e6fffa;
+  color: #234e52;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid #b2f5ea;
+}
+
+.card-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #e2e8f0;
+  background-color: #f8fafc;
+}
+
+.read-more {
+  color: #38a169;
+  font-weight: 600;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.higher-education-card:hover .read-more {
+  color: #2f855a;
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+  .card-header {
+    padding: 1rem 1rem 0.75rem;
+    gap: 0.75rem;
+  }
+  
+  .university-logo {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .university-info h3 {
+    font-size: 1.1rem;
+  }
+  
+  .university-info .course {
+    font-size: 0.85rem;
+  }
+  
+  .card-body {
+    padding: 0 1rem 0.75rem;
+  }
+  
+  .card-footer {
+    padding: 0.75rem 1rem;
+  }
+  
+  .detail-item {
+    font-size: 0.8rem;
+  }
+  
+  .exam-badge {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+  }
+  
+  .country-flag {
+    font-size: 1rem;
+  }
+  
+  .country-name {
+    font-size: 0.8rem;
+  }
+}
