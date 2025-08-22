@@ -11,9 +11,9 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(helmet());
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production'
-    ? ['https://placements-portal.netlify.app']
-    : ['http://localhost:3000', 'https://placements-portal.netlify.app'],
+  origin: process.env.NODE_ENV === 'production' 
+    ? ['https://your-domain.com'] 
+    : ['http://localhost:3000'],
   credentials: true
 }));
 app.use(morgan('combined'));
