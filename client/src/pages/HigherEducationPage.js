@@ -35,11 +35,13 @@ const HigherEducationPage = () => {
     try {
       setLoading(true);
       const response = await higherEducationAPI.getAll();
-      setExperiences(response.data.experiences);
+      // The new Firebase API returns data directly as an array
+      setExperiences(response.data || []);
       setError(null);
     } catch (err) {
       setError('Failed to fetch higher education experiences');
       console.error('Error fetching experiences:', err);
+      setExperiences([]); // Set empty array on error to prevent crashes
     } finally {
       setLoading(false);
     }
@@ -55,28 +57,34 @@ const HigherEducationPage = () => {
   };
 
   const applyFilters = useCallback(() => {
+    // Ensure experiences is an array before filtering
+    if (!Array.isArray(experiences)) {
+      setFilteredExperiences([]);
+      return;
+    }
+
     let filtered = experiences;
 
     if (filters.country) {
-      filtered = filtered.filter(e => 
-        e.country.toLowerCase().includes(filters.country.toLowerCase())
+      filtered = filtered.filter(e =>
+        e.country && e.country.toLowerCase().includes(filters.country.toLowerCase())
       );
     }
 
     if (filters.university) {
-      filtered = filtered.filter(e => 
-        e.universityName.toLowerCase().includes(filters.university.toLowerCase())
+      filtered = filtered.filter(e =>
+        e.universityName && e.universityName.toLowerCase().includes(filters.university.toLowerCase())
       );
     }
 
     if (filters.course) {
-      filtered = filtered.filter(e => 
-        e.course.toLowerCase().includes(filters.course.toLowerCase())
+      filtered = filtered.filter(e =>
+        e.course && e.course.toLowerCase().includes(filters.course.toLowerCase())
       );
     }
 
     if (filters.year) {
-      filtered = filtered.filter(e => e.yearOfAdmission.toString() === filters.year);
+      filtered = filtered.filter(e => e.yearOfAdmission && e.yearOfAdmission.toString() === filters.year);
     }
 
     setFilteredExperiences(filtered);
@@ -129,11 +137,11 @@ const HigherEducationPage = () => {
       />
 
       <div className="results-info">
-        <p>Showing {filteredExperiences.length} of {experiences.length} experiences</p>
+        <p>Showing {filteredExperiences?.length || 0} of {experiences?.length || 0} experiences</p>
       </div>
 
       <div className="experiences-grid">
-        {filteredExperiences.length > 0 ? (
+        {filteredExperiences && filteredExperiences.length > 0 ? (
           filteredExperiences.map(experience => (
             <HigherEducationCard key={experience.id} experience={experience} />
           ))

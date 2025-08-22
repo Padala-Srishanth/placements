@@ -35,11 +35,13 @@ const PlacementsPage = () => {
     try {
       setLoading(true);
       const response = await placementsAPI.getAll();
-      setPlacements(response.data.placements);
+      // The new Firebase API returns data directly as an array
+      setPlacements(response.data || []);
       setError(null);
     } catch (err) {
       setError('Failed to fetch placements');
       console.error('Error fetching placements:', err);
+      setPlacements([]); // Set empty array on error to prevent crashes
     } finally {
       setLoading(false);
     }
@@ -55,17 +57,23 @@ const PlacementsPage = () => {
   };
 
   const applyFilters = useCallback(() => {
+    // Ensure placements is an array before filtering
+    if (!Array.isArray(placements)) {
+      setFilteredPlacements([]);
+      return;
+    }
+
     let filtered = placements;
 
     if (filters.company) {
-      filtered = filtered.filter(p => 
-        p.companyName.toLowerCase().includes(filters.company.toLowerCase())
+      filtered = filtered.filter(p =>
+        p.companyName && p.companyName.toLowerCase().includes(filters.company.toLowerCase())
       );
     }
 
     if (filters.role) {
-      filtered = filtered.filter(p => 
-        p.role.toLowerCase().includes(filters.role.toLowerCase())
+      filtered = filtered.filter(p =>
+        p.role && p.role.toLowerCase().includes(filters.role.toLowerCase())
       );
     }
 
@@ -74,7 +82,7 @@ const PlacementsPage = () => {
     }
 
     if (filters.year) {
-      filtered = filtered.filter(p => p.batchYear.toString() === filters.year);
+      filtered = filtered.filter(p => p.batchYear && p.batchYear.toString() === filters.year);
     }
 
     setFilteredPlacements(filtered);
@@ -127,11 +135,11 @@ const PlacementsPage = () => {
       />
 
       <div className="results-info">
-        <p>Showing {filteredPlacements.length} of {placements.length} experiences</p>
+        <p>Showing {filteredPlacements?.length || 0} of {placements?.length || 0} experiences</p>
       </div>
 
       <div className="placements-grid">
-        {filteredPlacements.length > 0 ? (
+        {filteredPlacements && filteredPlacements.length > 0 ? (
           filteredPlacements.map(placement => (
             <PlacementCard key={placement.id} placement={placement} />
           ))
