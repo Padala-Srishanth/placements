@@ -19,21 +19,32 @@ const AdminDashboard = () => {
   const fetchDashboardData = async () => {
     try {
       setLoading(true);
-      
+
       // Fetch placements and higher education data
       const [placementsResponse, higherEducationResponse] = await Promise.all([
-        placementsAPI.getAll({ limit: 5 }),
-        higherEducationAPI.getAll({ limit: 5 })
+        placementsAPI.getAll(),
+        higherEducationAPI.getAll()
       ]);
 
+      // The new Firebase API returns data directly as an array
+      const placements = placementsResponse.data || [];
+      const higherEducation = higherEducationResponse.data || [];
+
       setStats({
-        totalPlacements: placementsResponse.data.placements.length,
-        totalHigherEducation: higherEducationResponse.data.experiences.length,
-        recentPlacements: placementsResponse.data.placements.slice(0, 5),
-        recentHigherEducation: higherEducationResponse.data.experiences.slice(0, 5)
+        totalPlacements: placements.length,
+        totalHigherEducation: higherEducation.length,
+        recentPlacements: placements.slice(0, 5),
+        recentHigherEducation: higherEducation.slice(0, 5)
       });
     } catch (error) {
       console.error('Error fetching dashboard data:', error);
+      // Set empty data on error to prevent crashes
+      setStats({
+        totalPlacements: 0,
+        totalHigherEducation: 0,
+        recentPlacements: [],
+        recentHigherEducation: []
+      });
     } finally {
       setLoading(false);
     }
@@ -136,8 +147,8 @@ const AdminDashboard = () => {
               stats.recentHigherEducation.map(experience => (
                 <div key={experience.id} className="item-card">
                   <div className="item-info">
-                    <h4>{experience.universityName}</h4>
-                    <p>{experience.course} - {experience.country}</p>
+                    <h4>{experience.universityName || experience.instituteName}</h4>
+                    <p>{experience.program || experience.course} - {experience.location || experience.country}</p>
                   </div>
                   <div className="item-actions">
                     <Link 
