@@ -6,27 +6,19 @@ const Placement = require('../models/Placement');
 // GET /api/placements - Get all placements with optional filters
 router.get('/', async (req, res) => {
   try {
-    const { company, role, difficulty, year, limit = 50, offset = 0 } = req.query;
-    
+    const { company, role, limit = 50, offset = 0 } = req.query;
+
     let query = db.collection('placements');
-    
+
     // Apply filters
     if (company) {
       query = query.where('companyName', '>=', company)
                    .where('companyName', '<=', company + '\uf8ff');
     }
-    
+
     if (role) {
       query = query.where('role', '>=', role)
                    .where('role', '<=', role + '\uf8ff');
-    }
-    
-    if (difficulty) {
-      query = query.where('difficulty', '==', difficulty);
-    }
-    
-    if (year) {
-      query = query.where('batchYear', '==', parseInt(year));
     }
     
     // Order by creation date (newest first)
@@ -78,22 +70,16 @@ router.get('/filters/options', async (req, res) => {
     
     const companies = new Set();
     const roles = new Set();
-    const difficulties = new Set();
-    const years = new Set();
-    
+
     snapshot.forEach(doc => {
       const data = doc.data();
       companies.add(data.companyName);
       roles.add(data.role);
-      difficulties.add(data.difficulty);
-      years.add(data.batchYear);
     });
-    
+
     res.json({
       companies: Array.from(companies).sort(),
-      roles: Array.from(roles).sort(),
-      difficulties: Array.from(difficulties).sort(),
-      years: Array.from(years).sort((a, b) => b - a)
+      roles: Array.from(roles).sort()
     });
   } catch (error) {
     console.error('Error fetching filter options:', error);

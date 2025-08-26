@@ -30,10 +30,6 @@ const applyFilters = (baseQuery, filters) => {
   if (filters.batchYear) {
     filteredQuery = query(filteredQuery, where('batchYear', '==', parseInt(filters.batchYear)));
   }
-  if (filters.difficulty) {
-    filteredQuery = query(filteredQuery, where('difficulty', '==', filters.difficulty));
-  }
-
   return filteredQuery;
 };
 
@@ -79,25 +75,19 @@ export const placementsAPI = {
       const companies = new Set();
       const roles = new Set();
       const locations = new Set();
-      const batchYears = new Set();
-      const difficulties = new Set();
 
       querySnapshot.docs.forEach(doc => {
         const data = doc.data();
         if (data.companyName) companies.add(data.companyName);
         if (data.role) roles.add(data.role);
         if (data.location) locations.add(data.location);
-        if (data.batchYear) batchYears.add(data.batchYear);
-        if (data.difficulty) difficulties.add(data.difficulty);
       });
 
       return {
         data: {
           companies: Array.from(companies).sort(),
           roles: Array.from(roles).sort(),
-          locations: Array.from(locations).sort(),
-          batchYears: Array.from(batchYears).sort((a, b) => b - a),
-          difficulties: Array.from(difficulties).sort()
+          locations: Array.from(locations).sort()
         }
       };
     } catch (error) {
@@ -187,25 +177,19 @@ export const higherEducationAPI = {
       const universities = new Set();
       const programs = new Set();
       const locations = new Set();
-      const batchYears = new Set();
-      const difficulties = new Set();
 
       querySnapshot.docs.forEach(doc => {
         const data = doc.data();
         if (data.universityName) universities.add(data.universityName);
         if (data.program) programs.add(data.program);
         if (data.location) locations.add(data.location);
-        if (data.batchYear) batchYears.add(data.batchYear);
-        if (data.difficulty) difficulties.add(data.difficulty);
       });
 
       return {
         data: {
           universities: Array.from(universities).sort(),
           programs: Array.from(programs).sort(),
-          locations: Array.from(locations).sort(),
-          batchYears: Array.from(batchYears).sort((a, b) => b - a),
-          difficulties: Array.from(difficulties).sort()
+          locations: Array.from(locations).sort()
         }
       };
     } catch (error) {

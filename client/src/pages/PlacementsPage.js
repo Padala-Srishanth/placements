@@ -11,16 +11,36 @@ const PlacementsPage = () => {
   const [error, setError] = useState(null);
   const [filters, setFilters] = useState({
     company: '',
-    role: '',
-    difficulty: '',
-    year: ''
+    role: ''
   });
   const [filterOptions, setFilterOptions] = useState({
     companies: [],
-    roles: [],
-    difficulties: ['Easy', 'Medium', 'Hard'],
-    years: []
+    roles: []
   });
+
+  const applyFilters = useCallback(() => {
+    // Ensure placements is an array before filtering
+    if (!Array.isArray(placements)) {
+      setFilteredPlacements([]);
+      return;
+    }
+
+    let filtered = placements;
+
+    if (filters.company) {
+      filtered = filtered.filter(p =>
+        p.companyName && p.companyName.toLowerCase().includes(filters.company.toLowerCase())
+      );
+    }
+
+    if (filters.role) {
+      filtered = filtered.filter(p =>
+        p.role && p.role.toLowerCase().includes(filters.role.toLowerCase())
+      );
+    }
+
+    setFilteredPlacements(filtered);
+  }, [placements, filters]);
 
   useEffect(() => {
     fetchPlacements();
@@ -29,7 +49,7 @@ const PlacementsPage = () => {
 
   useEffect(() => {
     applyFilters();
-  }, [placements, filters]);
+  }, [applyFilters]);
 
   const fetchPlacements = async () => {
     try {
@@ -56,38 +76,6 @@ const PlacementsPage = () => {
     }
   };
 
-  const applyFilters = useCallback(() => {
-    // Ensure placements is an array before filtering
-    if (!Array.isArray(placements)) {
-      setFilteredPlacements([]);
-      return;
-    }
-
-    let filtered = placements;
-
-    if (filters.company) {
-      filtered = filtered.filter(p =>
-        p.companyName && p.companyName.toLowerCase().includes(filters.company.toLowerCase())
-      );
-    }
-
-    if (filters.role) {
-      filtered = filtered.filter(p =>
-        p.role && p.role.toLowerCase().includes(filters.role.toLowerCase())
-      );
-    }
-
-    if (filters.difficulty) {
-      filtered = filtered.filter(p => p.difficulty === filters.difficulty);
-    }
-
-    if (filters.year) {
-      filtered = filtered.filter(p => p.batchYear && p.batchYear.toString() === filters.year);
-    }
-
-    setFilteredPlacements(filtered);
-  }, [placements, filters]);
-
   const handleFilterChange = (newFilters) => {
     setFilters(newFilters);
   };
@@ -95,9 +83,7 @@ const PlacementsPage = () => {
   const clearFilters = () => {
     setFilters({
       company: '',
-      role: '',
-      difficulty: '',
-      year: ''
+      role: ''
     });
   };
 

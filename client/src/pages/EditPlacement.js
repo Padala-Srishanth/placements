@@ -18,11 +18,13 @@ const EditPlacement = () => {
       const response = await placementsAPI.getById(id);
       const placement = response.data;
 
-      // Ensure arrays exist
+      // Ensure arrays and contact fields exist
       setInitialData({
         ...placement,
         interviewRounds: placement.interviewRounds || [{ name: '', details: '' }],
-        commonlyAskedQuestions: placement.commonlyAskedQuestions || ['']
+        commonlyAskedQuestions: placement.commonlyAskedQuestions || [''],
+        linkedinProfile: placement.linkedinProfile || '',
+        email: placement.email || ''
       });
     } catch (error) {
       console.error('Error fetching placement:', error);

@@ -189,6 +189,33 @@ const HigherEducationForm = ({ initialData, onSubmit, loading, submitText }) => 
         </div>
       </div>
 
+      <div className="form-section">
+        <h3>Contact Information</h3>
+        <div className="form-row">
+          <div className="form-group">
+            <label htmlFor="linkedinProfile">LinkedIn Profile</label>
+            <input
+              type="url"
+              id="linkedinProfile"
+              value={formData.linkedinProfile}
+              onChange={(e) => handleInputChange('linkedinProfile', e.target.value)}
+              placeholder="https://linkedin.com/in/your-profile"
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              value={formData.email}
+              onChange={(e) => handleInputChange('email', e.target.value)}
+              placeholder="your.email@example.com"
+            />
+          </div>
+        </div>
+      </div>
+
       <div className="form-actions">
         <Link to="/admin/dashboard" className="cancel-btn">
           Cancel

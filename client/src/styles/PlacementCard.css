@@ -73,16 +73,6 @@
   font-weight: 600;
 }
 
-.difficulty-badge {
-  color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 1rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
 .interview-rounds {
   margin-bottom: 1rem;
 }
@@ -143,9 +133,48 @@
   .detail-item {
     font-size: 0.8rem;
   }
-  
-  .difficulty-badge {
-    font-size: 0.7rem;
-    padding: 0.2rem 0.6rem;
-  }
+}
+
+/* Contact Icons Styles */
+.contact-icons {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+.contact-icon:hover {
+  transform: scale(1.1);
+}
+
+.linkedin-icon {
+  background-color: #0077b5;
+  color: white;
+}
+
+.linkedin-icon:hover {
+  background-color: #005885;
+}
+
+.email-icon {
+  background-color: #ea4335;
+  color: white;
+}
+
+.email-icon:hover {
+  background-color: #c23321;
 }

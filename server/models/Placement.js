@@ -5,11 +5,11 @@ class Placement {
     this.companyLogo = data.companyLogo || '';
     this.role = data.role || '';
     this.location = data.location || '';
-    this.batchYear = data.batchYear || new Date().getFullYear();
-    this.difficulty = data.difficulty || 'Medium'; // Easy, Medium, Hard
     this.interviewRounds = data.interviewRounds || [];
     this.commonlyAskedQuestions = data.commonlyAskedQuestions || [];
     this.tips = data.tips || '';
+    this.linkedinProfile = data.linkedinProfile || '';
+    this.email = data.email || '';
     this.createdAt = data.createdAt || new Date();
     this.updatedAt = data.updatedAt || new Date();
   }
@@ -24,14 +24,6 @@ class Placement {
 
     if (!this.role || this.role.trim().length === 0) {
       errors.push('Role is required');
-    }
-
-    if (!this.batchYear || this.batchYear < 2000 || this.batchYear > new Date().getFullYear() + 5) {
-      errors.push('Valid batch year is required');
-    }
-
-    if (!['Easy', 'Medium', 'Hard'].includes(this.difficulty)) {
-      errors.push('Difficulty must be Easy, Medium, or Hard');
     }
 
     if (!Array.isArray(this.interviewRounds)) {
@@ -52,11 +44,11 @@ class Placement {
       companyLogo: this.companyLogo,
       role: this.role,
       location: this.location,
-      batchYear: this.batchYear,
-      difficulty: this.difficulty,
       interviewRounds: this.interviewRounds,
       commonlyAskedQuestions: this.commonlyAskedQuestions,
       tips: this.tips,
+      linkedinProfile: this.linkedinProfile,
+      email: this.email,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt
     };

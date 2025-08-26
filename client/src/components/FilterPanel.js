@@ -48,19 +48,6 @@ const FilterPanel = ({ filters, filterOptions, onFilterChange, onClearFilters, t
                 ))}
               </select>
             </div>
-            
-            <div className="filter-group">
-              <label>Difficulty</label>
-              <select
-                value={filters.difficulty}
-                onChange={(e) => handleInputChange('difficulty', e.target.value)}
-              >
-                <option value="">All Difficulties</option>
-                {filterOptions.difficulties?.map(difficulty => (
-                  <option key={difficulty} value={difficulty}>{difficulty}</option>
-                ))}
-              </select>
-            </div>
           </>
         ) : (
           <>
@@ -104,19 +91,6 @@ const FilterPanel = ({ filters, filterOptions, onFilterChange, onClearFilters, t
             </div>
           </>
         )}
-        
-        <div className="filter-group">
-          <label>Year</label>
-          <select
-            value={filters.year}
-            onChange={(e) => handleInputChange('year', e.target.value)}
-          >
-            <option value="">All Years</option>
-            {filterOptions.years?.map(year => (
-              <option key={year} value={year}>{year}</option>
-            ))}
-          </select>
-        </div>
       </div>
     </div>
   );

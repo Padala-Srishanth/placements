@@ -14,11 +14,11 @@ const AddPlacement = () => {
     companyLogo: '',
     role: '',
     location: '',
-    batchYear: new Date().getFullYear(),
-    difficulty: 'Medium',
     interviewRounds: [{ name: '', details: '' }],
     commonlyAskedQuestions: [''],
-    tips: ''
+    tips: '',
+    linkedinProfile: '',
+    email: ''
   };
 
   const handleSubmit = async (formData) => {

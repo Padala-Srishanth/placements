@@ -10,6 +10,8 @@ class HigherEducation {
     this.applicationProcess = data.applicationProcess || '';
     this.visaProcess = data.visaProcess || '';
     this.tips = data.tips || '';
+    this.linkedinProfile = data.linkedinProfile || '';
+    this.email = data.email || '';
     this.createdAt = data.createdAt || new Date();
     this.updatedAt = data.updatedAt || new Date();
   }

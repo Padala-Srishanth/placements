@@ -110,8 +110,6 @@ The application will create these collections:
   "companyLogo": "string",
   "role": "string",
   "location": "string",
-  "batchYear": "number",
-  "difficulty": "Easy|Medium|Hard",
   "interviewRounds": [
     {
       "name": "string",
@@ -120,6 +118,8 @@ The application will create these collections:
   ],
   "commonlyAskedQuestions": ["string"],
   "tips": "string",
+  "linkedinProfile": "string",
+  "email": "string",
   "createdAt": "timestamp",
   "updatedAt": "timestamp"
 }

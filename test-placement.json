@@ -3,8 +3,6 @@
   "companyLogo": "",
   "role": "Software Engineer",
   "location": "Bangalore",
-  "batchYear": 2024,
-  "difficulty": "Medium",
   "interviewRounds": [
     {
       "name": "Technical Round",
@@ -14,5 +12,7 @@
   "commonlyAskedQuestions": [
     "What is your experience with React?"
   ],
-  "tips": "Practice coding problems"
+  "tips": "Practice coding problems",
+  "linkedinProfile": "",
+  "email": ""
 }

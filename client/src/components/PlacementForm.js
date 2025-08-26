@@ -120,34 +120,7 @@ const PlacementForm = ({ initialData, onSubmit, loading, submitText }) => {
           </div>
         </div>
 
-        <div className="form-row">
-          <div className="form-group">
-            <label htmlFor="batchYear">Batch Year *</label>
-            <input
-              type="number"
-              id="batchYear"
-              value={formData.batchYear}
-              onChange={(e) => handleInputChange('batchYear', parseInt(e.target.value))}
-              min="2000"
-              max={new Date().getFullYear() + 5}
-              required
-            />
-          </div>
-          
-          <div className="form-group">
-            <label htmlFor="difficulty">Difficulty *</label>
-            <select
-              id="difficulty"
-              value={formData.difficulty}
-              onChange={(e) => handleInputChange('difficulty', e.target.value)}
-              required
-            >
-              <option value="Easy">Easy</option>
-              <option value="Medium">Medium</option>
-              <option value="Hard">Hard</option>
-            </select>
-          </div>
-        </div>
+
       </div>
 
       <div className="form-section">
@@ -237,6 +210,33 @@ const PlacementForm = ({ initialData, onSubmit, loading, submitText }) => {
             placeholder="Share tips and advice for future candidates"
             rows="6"
           />
+        </div>
+      </div>
+
+      <div className="form-section">
+        <h3>Contact Information</h3>
+        <div className="form-row">
+          <div className="form-group">
+            <label htmlFor="linkedinProfile">LinkedIn Profile</label>
+            <input
+              type="url"
+              id="linkedinProfile"
+              value={formData.linkedinProfile}
+              onChange={(e) => handleInputChange('linkedinProfile', e.target.value)}
+              placeholder="https://linkedin.com/in/your-profile"
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              value={formData.email}
+              onChange={(e) => handleInputChange('email', e.target.value)}
+              placeholder="your.email@example.com"
+            />
+          </div>
         </div>
       </div>
 

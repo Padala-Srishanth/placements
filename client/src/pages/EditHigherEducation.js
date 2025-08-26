@@ -18,7 +18,7 @@ const EditHigherEducation = () => {
       const response = await higherEducationAPI.getById(id);
       const experience = response.data;
 
-      // Ensure examScores object exists
+      // Ensure examScores object and contact fields exist
       setInitialData({
         ...experience,
         examScores: experience.examScores || {
@@ -26,7 +26,9 @@ const EditHigherEducation = () => {
           IELTS: '',
           TOEFL: '',
           GMAT: ''
-        }
+        },
+        linkedinProfile: experience.linkedinProfile || '',
+        email: experience.email || ''
       });
     } catch (error) {
       console.error('Error fetching higher education experience:', error);

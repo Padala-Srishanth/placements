@@ -23,7 +23,9 @@ const AddHigherEducation = () => {
     },
     applicationProcess: '',
     visaProcess: '',
-    tips: ''
+    tips: '',
+    linkedinProfile: '',
+    email: ''
   };
 
   const handleSubmit = async (formData) => {
